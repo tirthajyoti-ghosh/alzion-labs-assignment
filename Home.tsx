@@ -1,9 +1,17 @@
 import React from 'react';
-import {View, Text, ActivityIndicator, FlatList, Pressable} from 'react-native';
+import {
+  View,
+  Text,
+  ActivityIndicator,
+  FlatList,
+  Pressable,
+  StyleSheet,
+} from 'react-native';
 import {useQuery} from '@tanstack/react-query';
 import {useNavigation} from '@react-navigation/native';
 import Animated from 'react-native-reanimated';
 import api from './services/api';
+import Header from './components/Header';
 
 export default function Home() {
   const {
@@ -27,54 +35,17 @@ export default function Home() {
   }
 
   return (
-    <View
-      style={{
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: '40%',
-      }}>
+    <View style={styles.container}>
+      <Header icon="bell" />
       <FlatList
-        style={{height: '30%', width: '100%'}}
         data={plants}
         renderItem={({item: plant}) => (
           <Pressable onPress={() => navigation.navigate('Plant', plant)}>
-            <View
-              style={{
-                backgroundColor: '#9CE5CB',
-                marginBottom: 10,
-                marginHorizontal: 10,
-                borderRadius: 25,
-                padding: 20,
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-              }}>
+            <View style={styles.itemContainer}>
               <View>
-                <Text
-                  style={{
-                    color: 'black',
-                    fontSize: 14,
-                    fontFamily: 'Poppins-Regular',
-                  }}>
-                  {plant.category}
-                </Text>
-                <Text
-                  style={{
-                    color: 'black',
-                    fontFamily: 'Philosopher-Bold',
-                    fontSize: 32,
-                  }}>
-                  {plant.name}
-                </Text>
-                <Text
-                  style={{
-                    color: 'black',
-                    fontFamily: 'Poppins-Regular',
-                    fontSize: 18,
-                    fontWeight: '600',
-                  }}>
-                  ${plant.price}
-                </Text>
+                <Text style={styles.category}>{plant.category}</Text>
+                <Text style={styles.name}>{plant.name}</Text>
+                <Text style={styles.price}>${plant.price}</Text>
               </View>
               <Animated.Image
                 source={{uri: plant.image}}
@@ -88,3 +59,45 @@ export default function Home() {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '40%',
+    backgroundColor: '#fff',
+  },
+  listContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '40%',
+    backgroundColor: '#fff',
+  },
+  itemContainer: {
+    backgroundColor: '#9CE5CB',
+    marginBottom: 10,
+    marginHorizontal: 10,
+    borderRadius: 25,
+    padding: 20,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  category: {
+    color: 'black',
+    fontSize: 14,
+    fontFamily: 'Poppins-Regular',
+  },
+  name: {
+    color: 'black',
+    fontFamily: 'Philosopher-Bold',
+    fontSize: 32,
+  },
+  price: {
+    color: 'black',
+    fontFamily: 'Poppins-Regular',
+    fontSize: 18,
+    fontWeight: '600',
+  },
+});
