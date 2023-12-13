@@ -5,8 +5,6 @@ import {
   Image,
   ActivityIndicator,
   FlatList,
-  Button,
-  ScrollView,
   Pressable,
 } from 'react-native';
 import {useQuery} from '@tanstack/react-query';
@@ -59,7 +57,11 @@ export default function Home() {
               }}>
               <View>
                 <Text
-                  style={{color: 'black', fontSize: 14, fontFamily: 'Poppins-Regular'}}>
+                  style={{
+                    color: 'black',
+                    fontSize: 14,
+                    fontFamily: 'Poppins-Regular',
+                  }}>
                   {plant.category}
                 </Text>
                 <Text
@@ -67,7 +69,6 @@ export default function Home() {
                     color: 'black',
                     fontFamily: 'Philosopher-Bold',
                     fontSize: 32,
-                    fontWeight: '700',
                   }}>
                   {plant.name}
                 </Text>

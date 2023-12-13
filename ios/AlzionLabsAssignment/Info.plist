@@ -49,8 +49,8 @@
 	<false/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Philosopher-Bold.ttf</string>
 		<string>Poppins-Regular.ttf</string>
+		<string>Philosopher-Bold.ttf</string>
 	</array>
 </dict>
 </plist>
