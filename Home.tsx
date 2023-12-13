@@ -39,6 +39,7 @@ export default function Home() {
       <Header icon="bell" />
       <FlatList
         data={plants}
+        style={{width: '100%'}}
         renderItem={({item: plant}) => (
           <Pressable onPress={() => navigation.navigate('Plant', plant)}>
             <View style={styles.itemContainer}>
@@ -49,7 +50,7 @@ export default function Home() {
               </View>
               <Animated.Image
                 source={{uri: plant.image}}
-                style={{width: 100, height: 100}}
+                style={styles.plantImg}
                 sharedTransitionTag={`${plant.id}`}
               />
             </View>
@@ -61,14 +62,14 @@ export default function Home() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: '40%',
-    backgroundColor: '#fff',
+  plantImg: {
+    width: 150,
+    aspectRatio: 0.8,
+    position: 'absolute',
+    right: 20,
+    top: -50,
   },
-  listContainer: {
+  container: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
@@ -77,6 +78,7 @@ const styles = StyleSheet.create({
   },
   itemContainer: {
     backgroundColor: '#9CE5CB',
+    marginTop: 50,
     marginBottom: 10,
     marginHorizontal: 10,
     borderRadius: 25,
@@ -99,5 +101,6 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins-Regular',
     fontSize: 18,
     fontWeight: '600',
+    marginTop: 30,
   },
 });

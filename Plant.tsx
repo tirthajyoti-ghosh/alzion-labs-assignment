@@ -24,7 +24,7 @@ export default function Plant({route}) {
             {'\n'}${plant.price}
           </Text>
           <Text style={styles.text}>
-            <Text style={styles.label}>PRICE</Text>
+            <Text style={styles.label}>SIZE</Text>
             {'\n'}
             {plant.size}
           </Text>
