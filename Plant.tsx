@@ -1,5 +1,6 @@
 import React from 'react';
-import {Image, Text, View} from 'react-native';
+import {Text, View} from 'react-native';
+import Animated from 'react-native-reanimated';
 
 export default function Plant({route}) {
   const plant = route.params;
@@ -37,7 +38,7 @@ export default function Plant({route}) {
           {plant.size}
         </Text>
       </View>
-      <Image
+      <Animated.Image
         source={{uri: plant.image}}
         style={{
           width: 250,
@@ -46,6 +47,7 @@ export default function Plant({route}) {
           top: 50,
           right: 0,
         }}
+        sharedTransitionTag={`${plant.id}`}
       />
     </View>
   );

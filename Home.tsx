@@ -1,14 +1,8 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  Image,
-  ActivityIndicator,
-  FlatList,
-  Pressable,
-} from 'react-native';
+import {View, Text, ActivityIndicator, FlatList, Pressable} from 'react-native';
 import {useQuery} from '@tanstack/react-query';
 import {useNavigation} from '@react-navigation/native';
+import Animated from 'react-native-reanimated';
 import api from './services/api';
 
 export default function Home() {
@@ -82,9 +76,10 @@ export default function Home() {
                   ${plant.price}
                 </Text>
               </View>
-              <Image
+              <Animated.Image
                 source={{uri: plant.image}}
                 style={{width: 100, height: 100}}
+                sharedTransitionTag={`${plant.id}`}
               />
             </View>
           </Pressable>
